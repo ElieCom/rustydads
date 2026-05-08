@@ -3,3 +3,5 @@
 Thumbs.db
 node_modules/
 *.log
+test.txt
+.ftp-deploy-sync-state.json
