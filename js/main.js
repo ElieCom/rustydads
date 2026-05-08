@@ -179,4 +179,62 @@ function initCalendar() {
   });
 }
 
-document.addEventListener('DOMContentLoaded', initCalendar);
+// ---------- Wipe countdown clock ----------
+function pad2(n) {
+  return String(n).padStart(2, '0');
+}
+
+function updateCountdown() {
+  const root = document.getElementById('countdown');
+  if (!root) return;
+  const now = new Date();
+  const wipes = getUpcomingWipes(1, now);
+  if (!wipes.length) return;
+  const next = wipes[0];
+
+  // Are we within 60 minutes after the wipe time? Show "Wiping now" state.
+  // Wipe is scheduled at 3 PM EST; we treat the active window as 0-60 min after the start.
+  const ms = next.date.getTime() - now.getTime();
+  const labelEl = document.getElementById('countdown-label');
+  const typeEl  = document.getElementById('countdown-type');
+  const daysEl  = document.getElementById('cd-days');
+  const hoursEl = document.getElementById('cd-hours');
+  const minsEl  = document.getElementById('cd-mins');
+  const secsEl  = document.getElementById('cd-secs');
+
+  let totalSec = Math.max(0, Math.floor(ms / 1000));
+  const days  = Math.floor(totalSec / 86400);
+  const hours = Math.floor((totalSec % 86400) / 3600);
+  const mins  = Math.floor((totalSec % 3600) / 60);
+  const secs  = totalSec % 60;
+
+  daysEl.textContent  = pad2(days);
+  hoursEl.textContent = pad2(hours);
+  minsEl.textContent  = pad2(mins);
+  secsEl.textContent  = pad2(secs);
+
+  const typeLabel = next.type === 'full'
+    ? '<span class="tag-full">Full wipe</span> · Map + blueprints'
+    : '<span class="tag-map">Map wipe</span> · Blueprints carry over';
+  typeEl.innerHTML = typeLabel + ' · 3 PM EST';
+
+  if (ms <= 0) {
+    // Wipe time has arrived. Recompute upcoming so we show the NEXT one.
+    labelEl.textContent = 'Wiping now — next wipe in';
+    root.classList.add('live-now');
+  } else {
+    labelEl.textContent = 'Next wipe in';
+    root.classList.remove('live-now');
+  }
+}
+
+function startCountdown() {
+  if (!document.getElementById('countdown')) return;
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  initCalendar();
+  startCountdown();
+});
