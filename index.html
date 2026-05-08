@@ -129,23 +129,21 @@
     <section class="section schedule">
       <div class="container">
         <h2>Wipe schedule</h2>
-        <p class="lead">Bi-weekly cadence. 1st and 3rd Thursday of every month, 3 PM Eastern.</p>
-        <div class="schedule-grid">
-          <div class="schedule-item">
-            <div class="schedule-date">1st Thursday</div>
-            <div class="schedule-detail">
-              <strong>Forced wipe</strong> (Facepunch monthly update)<br>
-              Map wipe + blueprints wipe
-            </div>
-          </div>
-          <div class="schedule-item">
-            <div class="schedule-date">3rd Thursday</div>
-            <div class="schedule-detail">
-              <strong>Map wipe only</strong><br>
-              Blueprints carry over
-            </div>
-          </div>
+        <p class="lead">Bi-weekly. 1st and 3rd Thursday of every month at 3 PM Eastern.</p>
+
+        <div class="schedule-legend">
+          <div class="legend-item legend-full"><span class="dot"></span> Full wipe (map + blueprints)</div>
+          <div class="legend-item legend-map"><span class="dot"></span> Map wipe only (blueprints carry over)</div>
+          <div class="legend-item legend-forced"><span class="dot"></span> Facepunch forced wipe (monthly mandatory)</div>
         </div>
+
+        <div class="wipe-calendar" id="wipe-calendar">
+          <!-- Filled by JS -->
+        </div>
+
+        <p class="schedule-note">
+          The 1st Thursday of every month is Facepunch's monthly forced wipe (everyone in Rust wipes that day). We align our 1st-Thursday wipe with it, so blueprints wipe then. Our 3rd-Thursday wipe is map-only - blueprints carry over.
+        </p>
       </div>
     </section>
 
