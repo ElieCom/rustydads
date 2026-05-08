@@ -3,7 +3,7 @@
 Static homepage for the Rusty Dads Rust server.
 
 **Live:** [rustydads.eliecom.com](https://rustydads.eliecom.com)
-**Discord:** [discord.gg/McRrvHNB](https://discord.gg/McRrvHNB)
+**Discord:** [discord.gg/9rS7GVxuXp](https://discord.gg/9rS7GVxuXp)
 **Game IP:** `135.148.136.48:60408`
 
 ## Stack
