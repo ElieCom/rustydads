@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Rusty Dads - a casual biweekly Rust server built for dads with limited time. 1.5x gather, QoL plugins, max team 4. Wipes 1st and 3rd Thursday at 3PM EST.">
+  <meta property="og:title" content="Rusty Dads - Casual Biweekly Rust Server">
+  <meta property="og:description" content="Built for dads who don't have time to grind. 1.5x gather, max team 4, biweekly wipes.">
+  <meta property="og:image" content="https://rustydads.eliecom.com/img/logo.png">
+  <title>Rusty Dads - Casual Biweekly Rust Server</title>
+  <link rel="icon" type="image/png" href="img/logo-round.png">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="hero">
+    <div class="hero-inner">
+      <img src="img/logo.png" alt="Rusty Dads" class="hero-logo">
+      <h1 class="hero-title">RUSTY DADS</h1>
+      <p class="hero-tag">A casual Rust server for dads with limited time</p>
+      <div class="hero-cta">
+        <a href="steam://connect/135.148.136.48:60408" class="btn btn-primary">Join Server</a>
+        <a href="https://discord.gg/McRrvHNB" class="btn btn-secondary" target="_blank" rel="noopener">Join Discord</a>
+      </div>
+      <p class="hero-ip">
+        <span class="label">Direct connect:</span>
+        <code id="server-ip" onclick="copyIP()">client.connect 135.148.136.48:60408</code>
+        <span class="copy-hint">click to copy</span>
+      </p>
+    </div>
+  </header>
+
+  <section class="stats">
+    <div class="stat">
+      <div class="stat-value">1.5x</div>
+      <div class="stat-label">Wood / Stone Gather</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">1.75x</div>
+      <div class="stat-label">Stack Sizes</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">50%</div>
+      <div class="stat-label">Decay Rate</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">4</div>
+      <div class="stat-label">Max Team Size</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">55/5</div>
+      <div class="stat-label">Day / Night (min)</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">2 wks</div>
+      <div class="stat-label">Wipe Interval</div>
+    </div>
+  </section>
+
+  <main>
+
+    <section class="section about">
+      <div class="container">
+        <h2>Why this server?</h2>
+        <p class="lead">Built for the player who logs in for an hour, makes real progress, and logs off without feeling behind.</p>
+        <div class="features">
+          <div class="feature">
+            <h3>Less grind, vanilla difficulty</h3>
+            <p>1.5x wood and stone, 1.25x ores, 1.75x stacks. Gather rates that respect your time, but you'll still die fairly to a better player.</p>
+          </div>
+          <div class="feature">
+            <h3>Long days, short nights</h3>
+            <p>55-minute days, 5-minute nights. Less time stumbling in the dark, more time playing.</p>
+          </div>
+          <div class="feature">
+            <h3>Decay is forgiving</h3>
+            <p>50% decay scale means your base survives the days you can't log in. Normal upkeep brackets - just maintain your TC.</p>
+          </div>
+          <div class="feature">
+            <h3>Bi-weekly wipes</h3>
+            <p>Every 1st and 3rd Thursday at 3 PM EST. Map wipes always; blueprints wipe with Facepunch's monthly forced wipe (1st Thursday).</p>
+          </div>
+          <div class="feature">
+            <h3>Max team 4 - strictly enforced</h3>
+            <p>No mega-clans. Solo, duo, trio, or quad. Everyone has a fair shot.</p>
+          </div>
+          <div class="feature">
+            <h3>Hidden raidable bases</h3>
+            <p>Random NPC-free raidable bases scattered across the map at all times. No domes, no markers - if you find one, it's yours to take.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section connect">
+      <div class="container">
+        <h2>How to join</h2>
+        <div class="connect-grid">
+          <div class="connect-card">
+            <h3>One-click</h3>
+            <p>Click the Join Server button up top. Steam launches Rust and connects automatically.</p>
+          </div>
+          <div class="connect-card">
+            <h3>F1 Console</h3>
+            <p>In Rust, press <kbd>F1</kbd> and type:</p>
+            <code>client.connect 135.148.136.48:60408</code>
+          </div>
+          <div class="connect-card">
+            <h3>Steam Server Browser</h3>
+            <p>View → Servers → Favorites → Add by IP:</p>
+            <code>135.148.136.48:60409</code>
+            <p class="small">(query port for the browser)</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section schedule">
+      <div class="container">
+        <h2>Wipe schedule</h2>
+        <p class="lead">Bi-weekly cadence. 1st and 3rd Thursday of every month, 3 PM Eastern.</p>
+        <div class="schedule-grid">
+          <div class="schedule-item">
+            <div class="schedule-date">1st Thursday</div>
+            <div class="schedule-detail">
+              <strong>Forced wipe</strong> (Facepunch monthly update)<br>
+              Map wipe + blueprints wipe
+            </div>
+          </div>
+          <div class="schedule-item">
+            <div class="schedule-date">3rd Thursday</div>
+            <div class="schedule-detail">
+              <strong>Map wipe only</strong><br>
+              Blueprints carry over
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section rules">
+      <div class="container">
+        <h2>House rules</h2>
+        <p class="lead">Be cool, have fun, go to bed on time.</p>
+        <div class="rules-grid">
+          <div class="rules-col">
+            <h3 class="rules-no">Don't</h3>
+            <ul>
+              <li>Cheat, hack, or script <em>(instant ban)</em></li>
+              <li>Use racism, hate speech, or targeted harassment</li>
+              <li>Exploit game bugs or glitches intentionally</li>
+              <li>Door camp for extended periods (5+ minutes)</li>
+              <li>Spam chat or voice</li>
+              <li>Coordinate with other teams to bypass the team limit</li>
+            </ul>
+          </div>
+          <div class="rules-col">
+            <h3 class="rules-yes">Do</h3>
+            <ul>
+              <li>Have fun. It's a game.</li>
+              <li>Be respectful in chat</li>
+              <li>Raid and PvP freely - all fair game</li>
+              <li>Report cheaters to an admin</li>
+              <li>Build cool bases - we might add yours to the rotation</li>
+              <li>Touch grass occasionally</li>
+            </ul>
+          </div>
+        </div>
+        <p class="rules-note">Breaking rules: warning → kick → ban. Cheating: instant permanent ban.</p>
+      </div>
+    </section>
+
+    <section class="section community">
+      <div class="container">
+        <h2>The crew</h2>
+        <p class="lead">Three admins. We play fair. We don't abuse our powers.</p>
+        <div class="admins">
+          <div class="admin">liquidneck</div>
+          <div class="admin">felps</div>
+          <div class="admin">SilkyDurag</div>
+        </div>
+        <p class="community-cta">
+          Need help, want to report a cheater, or have a base you want considered for the rotation?
+          <a href="https://discord.gg/McRrvHNB" target="_blank" rel="noopener">Hop in the Discord</a>.
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>RUSTY DADS - Hosted on Cybrancee | <a href="https://discord.gg/McRrvHNB" target="_blank" rel="noopener">Discord</a></p>
+      <p class="small">A server by ElieCom. Server browser: Modded tab.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
