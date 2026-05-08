@@ -135,10 +135,25 @@
           <div class="legend-item legend-full"><span class="dot"></span> Full wipe (map + blueprints)</div>
           <div class="legend-item legend-map"><span class="dot"></span> Map wipe only (blueprints carry over)</div>
           <div class="legend-item legend-forced"><span class="dot"></span> Facepunch forced wipe (monthly mandatory)</div>
+          <div class="legend-item legend-today"><span class="dot"></span> Today</div>
         </div>
 
-        <div class="wipe-calendar" id="wipe-calendar">
-          <!-- Filled by JS -->
+        <div class="calendar" id="calendar">
+          <div class="calendar-header">
+            <button class="cal-nav" id="cal-prev" aria-label="Previous month">&#9664;</button>
+            <h3 class="cal-title" id="cal-title">Month YYYY</h3>
+            <button class="cal-nav" id="cal-next" aria-label="Next month">&#9654;</button>
+          </div>
+          <div class="cal-weekdays">
+            <div>Sun</div><div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div>
+          </div>
+          <div class="cal-grid" id="cal-grid">
+            <!-- Filled by JS -->
+          </div>
+        </div>
+
+        <div class="upcoming-wipes" id="upcoming-wipes">
+          <!-- Filled by JS: next 4 wipes -->
         </div>
 
         <p class="schedule-note">
