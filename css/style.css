@@ -1,4 +1,4 @@
-/* Rusty Dads - styles */
+/* Kirkland Signature's - styles */
 
 :root {
   --bg: #0d0d0f;
@@ -80,7 +80,7 @@ kbd {
 }
 
 .hero-logo {
-  width: 600px;
+  width: 260px;
   max-width: 95%;
   height: auto;
   margin-bottom: 24px;
@@ -742,7 +742,7 @@ footer .small {
 @media (max-width: 640px) {
   .hero-title { font-size: 2.6rem; }
   .hero-tag { font-size: 1rem; }
-  .hero-logo { width: 90%; }
+  .hero-logo { width: 200px; }
   .section { padding: 60px 0; }
   .section h2 { font-size: 1.8rem; }
   .stat { padding: 20px 8px; border-right: none; border-bottom: 1px solid var(--border); }

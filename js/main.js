@@ -1,4 +1,4 @@
-// Rusty Dads - copy IP to clipboard
+// Kirkland Signature's - copy IP to clipboard
 function copyIP() {
   const code = document.getElementById('server-ip');
   const text = 'client.connect 135.148.136.48:60408';
