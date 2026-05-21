@@ -24,6 +24,7 @@ jobs:
           local-dir: ./
           protocol: ftp
           port: 21
+          timeout: 600000
           state-name: .ftp-deploy-sync-state.json
           exclude: |
             **/.git*
