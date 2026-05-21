@@ -8,7 +8,7 @@ on:
 
 jobs:
   deploy:
-    name: FTP deploy to rustydads.eatglue.com
+    name: FTP deploy to kirklandsignatures.eatglue.com
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo

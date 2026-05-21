@@ -2,7 +2,7 @@
 
 Static homepage for the Kirkland Signature's Rust server.
 
-**Live:** [rustydads.eatglue.com](https://rustydads.eatglue.com)
+**Live:** [kirklandsignatures.eatglue.com](https://kirklandsignatures.eatglue.com)
 **Discord:** [discord.gg/9rS7GVxuXp](https://discord.gg/9rS7GVxuXp)
 **Game IP:** `135.148.136.48:60408`
 
@@ -21,11 +21,11 @@ Plain static HTML / CSS / vanilla JS. No build step, no framework.
 
 ## Deploy
 
-The site lives at `rustydads.eatglue.com` on iPage hosting. Upload via FTP:
+The site lives at `kirklandsignatures.eatglue.com` on iPage hosting. Upload via FTP:
 
 - **Host:** `ftp.cadenelhabr.com`
 - **Port:** 21 (FTP) - SFTP/2222 currently broken on this host
-- **User:** scoped to `/rustydads/` only
+- **User:** `rustydads` (FTP username kept), home directory `/eatglue/kirklandsignatures`
 - **Tool:** VS Code `ftp-simple` extension - run `ftp-simple: Save - Upload to FTP server` after editing
 
 ## Adding a new map for players to download
@@ -33,7 +33,7 @@ The site lives at `rustydads.eatglue.com` on iPage hosting. Upload via FTP:
 1. Drop the `.map` file into `maps/`
 2. Reference it in `index.html` under a downloads section
 3. Upload via ftp-simple
-4. Update the Rust server's wipe schedule to use `https://rustydads.eatglue.com/maps/<filename>.map`
+4. Update the Rust server's wipe schedule to use `https://kirklandsignatures.eatglue.com/maps/<filename>.map`
 
 ## Admins
 
