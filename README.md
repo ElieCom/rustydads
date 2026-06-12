@@ -16,24 +16,46 @@ Plain static HTML / CSS / vanilla JS. No build step, no framework.
 ├── css/style.css    All styles
 ├── js/main.js       Copy-IP helper
 ├── img/             Logos and graphics
-└── maps/            Custom Rust maps for download (e.g. Wild Valley 2500)
+└── maps/            Custom Rust maps for download (e.g. ProcG6V1.2.map)
 ```
 
 ## Deploy
 
-The site lives at `kirklandsignatures.eatglue.com` on iPage hosting. Upload via FTP:
+The site lives at `kirklandsignatures.eatglue.com` on **Network Solutions** shared hosting
+(document root `/htdocs/eatglue/kirklandsignatures`). DNS is on Cloudflare - the record is
+proxied (orange cloud) and free Universal SSL covers `*.eatglue.com`, including this subdomain.
 
-- **Host:** `ftp.cadenelhabr.com`
-- **Port:** 21 (FTP) - SFTP/2222 currently broken on this host
-- **User:** `rustydads` (FTP username kept), home directory `/eatglue/kirklandsignatures`
-- **Tool:** VS Code `ftp-simple` extension - run `ftp-simple: Save - Upload to FTP server` after editing
+### Primary: git push (automatic)
+
+Push to `main` and GitHub Actions FTP-deploys in ~60s (`.github/workflows/deploy.yml`).
+This is the canonical deploy path - do not rely on upload-on-save from the editor.
+
+FTP credentials live in **GitHub repo Secrets**, not in this repo:
+`FTP_HOST`, `FTP_USERNAME`, `FTP_PASSWORD`. After the host migration these must be updated,
+or the deploy silently keeps targeting the dead host.
+
+### Manual / sync: VS Code SFTP extension
+
+`.vscode/sftp.json` (gitignored - holds the password locally only) is configured for the
+`SFTP` extension (`Natizyskunk.sftp`):
+
+- **Download server -> local:** Ctrl+Shift+P -> `SFTP: Download Project`
+- **Upload local -> server:** Ctrl+Shift+P -> `SFTP: Upload Project`
+
+Current host details (keep both the GitHub Secrets and `.vscode/sftp.json` in sync if they change):
+
+- **Host:** `ftp-a5349bf4.registeredsite.com`
+- **Port:** 21 (plain FTP) - SFTP/SSH not available on this plan
+- **User:** `rustydads`
+- **Remote path:** `/` - the FTP user is scoped (chrooted) to `/htdocs/eatglue/kirklandsignatures`.
+  If a download lands *above* the site, set `remotePath` to `/htdocs/eatglue/kirklandsignatures`.
 
 ## Adding a new map for players to download
 
-1. Drop the `.map` file into `maps/`
+1. Drop the `.map` file into `maps/` (e.g. `ProcG6V1.2.map`)
 2. Reference it in `index.html` under a downloads section
-3. Upload via ftp-simple
-4. Update the Rust server's wipe schedule to use `https://kirklandsignatures.eatglue.com/maps/<filename>.map`
+3. Deploy (git push, or `SFTP: Upload Project`)
+4. Point the Rust server's wipe schedule at `https://kirklandsignatures.eatglue.com/maps/<filename>.map`
 
 ## Admins
 

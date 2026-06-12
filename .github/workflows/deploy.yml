@@ -1,4 +1,4 @@
-name: Deploy to iPage FTP
+name: Deploy to Network Solutions FTP
 
 on:
   push:
