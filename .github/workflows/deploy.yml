@@ -1,37 +1,72 @@
-name: Deploy to Network Solutions FTP
+name: Deploy to Network Solutions SFTP
+
+# The host moved from plain FTP (ftp.cadenelhabr.com, port 21) to SFTP-only
+# (registeredsite.com, port 22). SamKirkland/FTP-Deploy-Action speaks FTP/FTPS
+# only, so it was replaced with an SFTP action.
+#
+# maps/ is 120 MB of the repo's 134 MB. This action re-uploads whatever it is
+# pointed at, so maps/ is excluded from the automatic push deploy and lives
+# behind the include_maps switch on a manual run instead.
 
 on:
   push:
     branches:
       - main
+    paths-ignore:
+      - 'maps/**'
+      - '**/*.md'
+      - '.vscode/**'
   workflow_dispatch:
+    inputs:
+      include_maps:
+        description: 'Also upload maps/ (120 MB, only needed when a map changed)'
+        type: boolean
+        default: false
+
+concurrency:
+  group: sftp-deploy
+  cancel-in-progress: false
 
 jobs:
   deploy:
-    name: FTP deploy to kirklandsignatures.eatglue.com
+    name: SFTP deploy to kirklandsignatures.eatglue.com
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
 
-      - name: FTP deploy
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      # The rustydads SFTP account is chrooted to
+      # /htdocs/eatglue/kirklandsignatures, so remote "./" is the site root.
+      # delete is false on purpose: never let a deploy prune files on the host.
+      # v1.2.3 declares node20, which GitHub now force-runs on node24. If that
+      # ever misbehaves, the action's master branch declares node24 explicitly.
+      - name: Upload site files
+        uses: Dylan700/sftp-upload-action@v1.2.3
         with:
-          server: ${{ secrets.FTP_HOST }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: /
-          local-dir: ./
-          protocol: ftp
-          port: 21
-          timeout: 600000
-          state-name: .ftp-deploy-sync-state.json
-          exclude: |
-            **/.git*
-            **/.git*/**
-            **/.github/**
-            **/.vscode/**
-            **/node_modules/**
-            **/*.md
-            .gitignore
-            .ftp-deploy-sync-state.json
+          server: ${{ secrets.SFTP_HOST }}
+          username: ${{ secrets.SFTP_USERNAME }}
+          password: ${{ secrets.SFTP_PASSWORD }}
+          port: 22
+          delete: 'false'
+          uploads: |
+            ./ => ./
+          ignore: |
+            .git*
+            .git/**
+            .github/**
+            .vscode/**
+            node_modules/**
+            *.md
+            maps/**
+
+      - name: Upload maps
+        if: ${{ inputs.include_maps }}
+        uses: Dylan700/sftp-upload-action@v1.2.3
+        with:
+          server: ${{ secrets.SFTP_HOST }}
+          username: ${{ secrets.SFTP_USERNAME }}
+          password: ${{ secrets.SFTP_PASSWORD }}
+          port: 22
+          delete: 'false'
+          uploads: |
+            ./maps/ => ./maps/
